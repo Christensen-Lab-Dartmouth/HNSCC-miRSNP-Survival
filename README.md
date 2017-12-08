@@ -7,7 +7,7 @@ Owen M. Wilkins, Alexander J. Titus, Lucas A. Salas, Jiang Gui, Melissa Eliot, R
 
 # Genotyping data details 
 
-Genotype data for discovery and validation populations is being submitted to dbGAP. Accession codes linking to these data on dbGAP will be posted here once submission is complete. 
+Genotype data for discovery and validation populations are being submitted to dbGAP. Accession codes linking to these data on dbGAP will be posted here once submission is complete. 
 
 # R-scripts included in this repository 
 
