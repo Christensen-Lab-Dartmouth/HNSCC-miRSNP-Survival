@@ -20,8 +20,11 @@ covs$bcr_patient_uuid <- tolower(covs$bcr_patient_uuid)
 #------------------------------------------------------------------------------------------
 
 # index for laryngeal tumors only 
-table(covs$anatomic_neoplasm_subdivision)
-covs_larynx <- covs[covs$anatomic_neoplasm_subdivision == "Larynx",]
+table(covs$anatomic_neoplasm_subdivision, covs$icd_10)
+table(covs$icd_10)
+
+#covs_larynx <- covs[covs$anatomic_neoplasm_subdivision == "Larynx",]
+covs_larynx <- covs[covs$icd_10 == "C32.1" | covs$icd_10 == "C32.9",]
 
 # determine if there is enough data to adjust for smoking, drinking and hpv status in data set 
 table(is.na(covs_larynx$amount_of_alcohol_consumption_per_day)) 

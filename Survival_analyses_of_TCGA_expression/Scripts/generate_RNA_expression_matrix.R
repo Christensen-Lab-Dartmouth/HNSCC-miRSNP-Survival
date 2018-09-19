@@ -5,7 +5,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ###########################
 rm(list = ls())
-setwd("/Users/Owen/Thesis/HNSCC_miRSNP/")
+setwd("/Users/Owen 1//Thesis/HNSCC_miRSNP/")
 
 #------------------------------------------------------------------------------------------
 # read in data
@@ -19,8 +19,8 @@ covs$bcr_patient_uuid <- tolower(covs$bcr_patient_uuid)
 metadata <- read.table("05_TCGA_expression_survival_analyses/Data_files/TCGA_HNSC_metadata_2017-04-07T22-01-38.673662.txt", sep = "\t", header = T, stringsAsFactors = F)
 
 # RNA_seq data
-setwd("/Users/Owen/Thesis/HNSCC_miRSNP/05_TCGA_expression_survival_analyses/RNA-seq/")
-dir("/Users/Owen/Thesis/HNSCC_miRSNP/05_TCGA_expression_survival_analyses/RNA-seq/")
+setwd("/Users/Owen 1//Thesis/HNSCC_miRSNP/05_TCGA_expression_survival_analyses/RNA-seq/")
+dir("/Users/Owen 1//Thesis/HNSCC_miRSNP/05_TCGA_expression_survival_analyses/RNA-seq/")
 
 #------------------------------------------------------------------------------------------
 # read in and process RNA-seq data for analysis 
@@ -106,8 +106,8 @@ which(colnames(expression) == "ENSG00000130147.14") # SH3BP4 # BOG25 # TPP # EHB
 which(colnames(expression) == "ENSG00000259571.1") # BLID
 
 # save expression matrix for RNA-seq data 
-setwd("/Users/Owen/Thesis/HNSCC_miRSNP/")
-saveRDS(expression, file = "TCGA_expression_survival_analyses/Data_files/TCGA_HNSCC_tumor_RNAseq_expression_matrix.rds")
+setwd("/Users/Owen 1/Thesis/HNSCC_miRSNP/")
+saveRDS(expression, file = "05_TCGA_expression_survival_analyses/Data_files/TCGA_HNSCC_tumor_RNAseq_expression_matrix.rds")
 
 rm(datalist_5, datalist_6, i, x, y, get_ids)
 
@@ -184,12 +184,17 @@ covs_2$tumor_stage <- tumor_stage
 covs_2$tumor_stage <- factor(covs_2$tumor_stage, levels = c("I+II", "III+IV"))
 
 # index for oral & laryngeal tumors only 
-table(covs_2$anatomic_neoplasm_subdivision)
-covs_oral <- covs_2[covs_2$anatomic_neoplasm_subdivision == "Oral Cavity",]
-covs_larynx <- covs_2[covs_2$anatomic_neoplasm_subdivision == "Larynx",]
+covs_oral <- covs_2[covs_2$icd_10 == "C02.1" | covs_2$icd_10 == "C02.2" | covs_2$icd_10 == "C02.9" 
+                  | covs_2$icd_10 == "C03.0" | covs_2$icd_10 == "C03.1" | covs_2$icd_10 == "C03.9"
+                  | covs_2$icd_10 == "C04.0" | covs_2$icd_10 == "C04.9" | covs_2$icd_10 == "C05.0"
+                  | covs_2$icd_10 == "C05.9" | covs_2$icd_10 == "C06.0" | covs_2$icd_10 == "C06.2"
+                  | covs_2$icd_10 == "C06.9" | covs_2$icd_10 == "C14.8",]
+
+covs_larynx <- covs_2[covs_2$icd_10 == "C32.1" | covs_2$icd_10 == "C32.9",]
 
 # drop subjects w/o BLID expression 
 covs_oral_2 <- covs_oral[-which(covs_oral$blid_continuous==-Inf),]
+covs_oral_2$blid_continuous
 
-saveRDS(covs_oral_2, file = "05_TCGA_expression_survival_analyses/Data_files/TCGA_oral_cancer_covs_cleaned_w_BLID_expression.rds")
-saveRDS(covs_larynx, file = "05_TCGA_expression_survival_analyses/Data_files/TCGA_larynx_cancer_covs_cleaned_w_SH3BP4_expression.rds")
+saveRDS(covs_oral_2, file = "05_TCGA_expression_survival_analyses/Data_files/TCGA_oral_cancer_covs_cleaned_w_BLID_expression2.rds")
+saveRDS(covs_larynx, file = "05_TCGA_expression_survival_analyses/Data_files/TCGA_larynx_cancer_covs_cleaned_w_SH3BP4_expression2.rds")

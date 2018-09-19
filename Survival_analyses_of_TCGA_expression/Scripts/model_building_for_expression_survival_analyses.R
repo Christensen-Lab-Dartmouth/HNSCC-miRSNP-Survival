@@ -37,7 +37,19 @@ covs$mir125b_1_continuous <- log2(expression_miR[,which(colnames(expression_miR)
 
 # index for oral tumors only 
 table(covs$anatomic_neoplasm_subdivision)
-covs_oral <- covs[covs$anatomic_neoplasm_subdivision == "Oral Cavity",]
+#covs_oral <- covs[covs$anatomic_neoplasm_subdivision == "Oral Cavity" | covs$anatomic_neoplasm_subdivision == "Floor of mouth" | covs$anatomic_neoplasm_subdivision == "Oral Tongue" 
+                 # | covs$anatomic_neoplasm_subdivision == "Hard Palate" | covs$anatomic_neoplasm_subdivision == "Buccal Mucosa" | covs$anatomic_neoplasm_subdivision == "Alveolar Ridge",]
+
+covs_oral <- covs[covs$icd_10 == "C02.1" | covs$icd_10 == "C02.2" | covs$icd_10 == "C02.9" 
+                  | covs$icd_10 == "C03.0" | covs$icd_10 == "C03.1" | covs$icd_10 == "C03.9"
+                  | covs$icd_10 == "C04.0" | covs$icd_10 == "C04.9" | covs$icd_10 == "C05.0"
+                  | covs$icd_10 == "C05.9" | covs$icd_10 == "C06.0" | covs$icd_10 == "C06.2"
+                  | covs$icd_10 == "C06.9" | covs$icd_10 == "C14.8",]
+
+covs_pharynx <- covs[covs$icd_10 == "C09.9" | covs$icd_10 == "C10.3" | covs$icd_10 == "C10.9" 
+                     | covs$icd_10 == "C13.9" | covs$icd_10 == "C01",]
+
+covs_larynx <- covs[covs$icd_10 == "C32.1" | covs$icd_10 == "C32.9",]
 
 # combine death and follow uop variable to get time to event for alive and dead subjects 
 covs_oral$time_to_event <- NA
@@ -238,4 +250,4 @@ chisq.test(matrix(table(as.numeric(covs_oral_2$tumor_stage == "III+IV"),
 # CONCLUSION: age, sex, race, & tumor stage should be included in the models 
 
 # save clean covariate data w/ expression included 
-saveRDS(covs_oral_2, file = "TCGA_expression_survival_analyses/Data_files/TCGA_oral_cancer_covs_cleaned_w_MIR100HG_expression.rds")
+saveRDS(covs_oral_2, file = "05_TCGA_expression_survival_analyses/Data_files/TCGA_oral_cancer_covs_cleaned_w_MIR100HG_expression2.rds")

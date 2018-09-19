@@ -7,7 +7,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ###########################
 rm(list = ls())
-setwd("/Users/Owen/Thesis/HNSCC_miRSNP/")
+setwd("/Users/Owen 1//Thesis/HNSCC_miRSNP/")
 library(survival)
 library(survminer)
 
@@ -17,8 +17,8 @@ library(survminer)
 covs_miRNA_oral <- readRDS("05_TCGA_expression_survival_analyses/Data_files/TCGA_oral_cancer_covs_cleaned_w_MIR100HG_expression.rds")
 
 # covariate file for BLID contains a different no of subjects as this is the subset of subjects with available RNA-seq data 
-covs_RNA_oral <- readRDS("05_TCGA_expression_survival_analyses/Data_files/TCGA_oral_cancer_covs_cleaned_w_BLID_expression.rds")
-covs_RNA_larynx <- readRDS("05_TCGA_expression_survival_analyses/Data_files/TCGA_oral_cancer_covs_cleaned_w_SH3BP4_expression.rds")
+covs_RNA_oral <- readRDS("05_TCGA_expression_survival_analyses/Data_files/TCGA_oral_cancer_covs_cleaned_w_BLID_expression2.rds")
+covs_RNA_larynx <- readRDS("05_TCGA_expression_survival_analyses/Data_files/TCGA_larynx_cancer_covs_cleaned_w_SH3BP4_expression2.rds")
 
 #------------------------------------------------------------------------------------------
 # fit multivariable cox models for each gene at MIR100HG locus 

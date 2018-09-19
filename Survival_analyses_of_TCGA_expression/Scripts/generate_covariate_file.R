@@ -6,7 +6,7 @@
 ###########################
 rm(list = ls())
 library(XML)
-setwd("TCGA_RNAseq_analysis/Clinical_data/")
+setwd("05_TCGA_expression_survival_analyses/Clinical_data/")
 
 # move files into one folder
 clinical_folders = list.files()

@@ -5,7 +5,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ###########################
 rm(list = ls())
-setwd("/Users/Owen/Thesis/HNSCC_miRSNP/")
+setwd("/Users/Owen 1//Thesis/HNSCC_miRSNP/")
 library(survival)
 library(survminer)
 
@@ -13,15 +13,15 @@ library(survminer)
 # read in and clean up data
 #------------------------------------------------------------------------------------------
 # covariate data 
-covs <- read.csv('TCGA_expression_survival_analyses/Data_files/TCGA_HNSC_covariates.csv', header = T, stringsAsFactors = F)
+covs <- read.csv('05_TCGA_expression_survival_analyses/Data_files/TCGA_HNSC_covariates.csv', header = T, stringsAsFactors = F)
 covs$bcr_patient_uuid <- tolower(covs$bcr_patient_uuid)
 
 # load subvject metadata 
-metadata <- read.table("TCGA_expression_survival_analyses/Data_files/metadata.cart.2017-04-13T19-36-30.619378.txt", sep = "\t", header = T, stringsAsFactors = F)
+metadata <- read.table("05_TCGA_expression_survival_analyses/Data_files/metadata.cart.2017-04-13T19-36-30.619378.txt", sep = "\t", header = T, stringsAsFactors = F)
 
 # set directory for miRseq data (not isoform specific)
-setwd("TCGA_miRseq_analysis/Survival/Data_files/TCGA_HNSC_miRNA-seq/")
-dir("TCGA_miRseq_analysis/Survival/Data_files/TCGA_HNSC_miRNA-seq/")
+setwd("04_TCGA_miRseq_analysis//Survival/Data_files/TCGA_HNSC_miRNA-seq/")
+dir("04_TCGA_miRseq_analysis/Survival/Data_files/TCGA_HNSC_miRNA-seq/")
 
 # get all file name in directory 
 filelist = list.files(path = dir(),pattern = ".txt", full.names = TRUE)
