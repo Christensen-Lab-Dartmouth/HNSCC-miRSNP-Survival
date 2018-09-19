@@ -13,4 +13,4 @@ Genotype data for discovery and validation populations are being submitted to db
 
 This repository includes R-scripts used to perform the analyses of predicted miRNA-target sites overlapping HNSCC-associated miR-SNPs, TCGA-miRseq data, and TCGA-RNAseq data. 
 
-For questions about the manuscript or data generation please e-mail: owen.m.wilkins.gr@dartmouth.edu
+For questions about the manuscript or data generation please e-mail: owen.m.wilkins.GR@dartmouth.edu
